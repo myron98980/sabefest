@@ -1,0 +1,120 @@
+.form-container {
+  width: 100%;
+  max-width: 580px;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 20px;
+}
+.custom-select__container {
+  width: 100%;
+}
+.option-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.form-header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== CAMBIO CLAVE AQUÍ: AÑADIMOS LOS NUEVOS ESTILOS ===== */
+
+.form-header-text {
+  text-align: center;
+  padding: 0 20px; /* Evita que el texto toque los bordes en móvil */
+}
+
+.form-super-title {
+  font-size: 1.5rem; /* Más pequeño que el título principal */
+  font-weight: 700;
+  color: #34495e;
+  margin-top: 40px; /* Espacio desde la imagen de cabecera */
+  margin-bottom: 8px; /* Poco espacio hasta la descripción */
+  text-transform: uppercase;
+}
+
+.form-description {
+  font-size: 1rem;
+  color: #7f8c8d; /* Un color más suave para la descripción */
+  margin-bottom: 30px; /* Espacio hasta el título principal */
+  line-height: 1.5;
+}
+
+.form-title {
+  font-size: 2.5rem; 
+  font-weight: 900;
+  color: #2c3e50;
+  /* Reducimos el margen superior ya que ahora hay texto arriba */
+  margin-top: 0;
+  margin-bottom: 35px; 
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.form-body {
+  padding: 0 60px 40px 60px;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #ecf0f1;
+  margin-bottom: 25px; 
+  padding-bottom: 8px;
+}
+.input-icon {
+  color: #95a5a6;
+  margin-right: 25px;
+  font-size: 1.6rem;
+  width: 30px;
+  text-align: center;
+}
+.input-field {
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  font-size: 1.3rem;
+  color: #34495e;
+}
+.input-field::placeholder {
+  color: #bdc3c7;
+}
+.btn-submit {
+  width: 100%;
+  padding: 18px; 
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px; 
+  text-transform: uppercase;
+}
+.btn-submit:hover {
+  box-shadow: 0 10px 25px rgba(0, 150, 255, 0.5);
+  transform: translateY(-3px);
+}
+.success-container { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px 60px 60px 60px; }
+.success-icon { font-size: 6rem; color: #28a745; margin-bottom: 25px; }
+.success-title { font-size: 2rem; font-weight: bold; color: #333; margin-bottom: 15px; }
+.success-text { font-size: 1.1rem; color: #555; line-height: 1.6; margin-bottom: 35px; max-width: 400px; }
+.btn-reset { padding: 15px 30px; font-size: 1rem; font-weight: bold; color: #007bff; background-color: transparent; border: 2px solid #007bff; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+.btn-reset:hover { background-color: #007bff; color: white; }
+.mobile-header { display: none; }
+.desktop-header { display: block; }
+@media (max-width: 768px) {
+  .desktop-header { display: none; }
+  .mobile-header { display: block; }
+  .form-body { padding-left: 30px; padding-right: 30px; }
+  .input-field, .custom-select__control, .custom-select__single-value, .custom-select__placeholder, .custom-select__option { font-size: 1rem; }
+}
