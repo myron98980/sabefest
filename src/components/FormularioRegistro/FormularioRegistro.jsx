@@ -130,7 +130,7 @@ const FormularioRegistro = () => {
                 value={formData.anoIngreso} 
                 options={opcionesAno} 
                 styles={customStyles}
-                placeholder="Año que ingresaste..." 
+                placeholder="Año de ingreso al SABE/ACCEDU" 
                 onChange={handleSelectChange} 
                 isSearchable={false} 
                 required 
