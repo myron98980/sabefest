@@ -52,7 +52,7 @@ const FormularioRegistro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const scriptURL = process.env.REACT_APP_GOOGLE_SCRIPT_URL;
+     const scriptURL = 'https://script.google.com/macros/s/AKfycbyng558SICXFe809gFOxNJW4tMfZOQ2dKijSxnMcMBj7JG6ZF02iSM2_kL8-ZwueTnhEQ/exec'; // Reemplaza esta con tu URL si es diferente
     const formDataObject = new FormData();
     formDataObject.append('nombres', formData.nombres);
     formDataObject.append('apellidos', formData.apellidos);
