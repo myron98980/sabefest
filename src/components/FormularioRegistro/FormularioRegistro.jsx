@@ -89,8 +89,8 @@ const FormularioRegistro = () => {
       <img src={headerImageDesktop} alt="Form Header" className="form-header-img desktop-header" />
       <img src={headerImageMobile} alt="Form Header Mobile" className="form-header-img mobile-header" />
       <div className="form-header-text">
-        <h3 className="form-super-title">CONCURSO DE CONOCIMIENTOS</h3>
-        <p className="form-description">Dirigido a estudiantes de 4to y 5to de secundaria</p>
+      <h3 className="form-super-title">INSCRIPCIÓN PARA EL SABE FEST</h3>
+        <p className="form-description">Este formulario tiene como objetivo registrar su paticipación en el SABE FEST 2025, una noche para celebrar tus logros y compartir con otros jovenes de Cerro Azul</p>
       </div>
       <h2 className="form-title">INSCRIPCIÓN</h2>
       
