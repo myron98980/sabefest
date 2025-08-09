@@ -83,7 +83,7 @@ const FormularioRegistro = () => {
       {/* ===== CAMBIO CLAVE AQUÍ: AÑADIMOS LOS NUEVOS TEXTOS ===== */}
       <div className="form-header-text">
         <h3 className="form-super-title">INSCRIPCIÓN PARA EL SABE FEST</h3>
-        <p className="form-description">Este formulario tiene como objetivo registrar su paticipacion en el SABE FEST 2025, una noche para celebrar tus logros y compartir con otroS jovenes de Cerro Azul</p>
+        <p className="form-description">Este formulario tiene como objetivo registrar su paticipación en el SABE FEST 2025, una noche para celebrar tus logros y compartir con otros jovenes de Cerro Azul</p>
       </div>
       
 
