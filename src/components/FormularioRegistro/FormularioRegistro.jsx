@@ -3,7 +3,8 @@ import Select from 'react-select';
 import './FormularioRegistro.css';
 import headerImageDesktop from '../../assets/form-header.png';
 import headerImageMobile from '../../assets/form-header-mobile.png';
-import { FaUser, FaBirthdayCake, FaUniversity, FaCalendarAlt, FaCheckCircle } from 'react-icons/fa';
+// 1. Importamos el icono de teléfono
+import { FaUser, FaBirthdayCake, FaUniversity, FaCalendarAlt, FaCheckCircle, FaPhoneAlt } from 'react-icons/fa';
 
 const opcionesAno = [
   { value: '2019', label: '2019' },
@@ -25,10 +26,12 @@ const customStyles = {
   menuPortal: base => ({ ...base, zIndex: 9999 })
 };
 
+// 2. Definimos el nuevo estado inicial del formulario
 const initialState = {
   nombres: '',
   apellidos: '',
   edad: '',
+  celular: '', // <-- Nuevo campo
   universidad: '',
   anoIngreso: null,
 };
@@ -41,6 +44,7 @@ const FormularioRegistro = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     const camposMayusculas = ['nombres', 'apellidos', 'universidad'];
+    // El celular no se convierte a mayúsculas
     const valorProcesado = camposMayusculas.includes(name) ? value.toUpperCase() : value;
     setFormData({ ...formData, [name]: valorProcesado });
   };
@@ -52,15 +56,20 @@ const FormularioRegistro = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-     const scriptURL = 'https://script.google.com/macros/s/AKfycbyng558SICXFe809gFOxNJW4tMfZOQ2dKijSxnMcMBj7JG6ZF02iSM2_kL8-ZwueTnhEQ/exec'; // Reemplaza esta con tu URL si es diferente
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyng558SICXFe809gFOxNJW4tMfZOQ2dKijSxnMcMBj7JG6ZF02iSM2_kL8-ZwueTnhEQ/exec'; // Reemplaza esto con tu URL o process.env
     const formDataObject = new FormData();
+    
+    // 3. Añadimos el nuevo campo al objeto que se enviará
     formDataObject.append('nombres', formData.nombres);
     formDataObject.append('apellidos', formData.apellidos);
     formDataObject.append('edad', formData.edad);
+    formDataObject.append('celular', formData.celular); // <-- Nuevo campo
     formDataObject.append('universidad', formData.universidad);
     formDataObject.append('anoIngreso', formData.anoIngreso ? formData.anoIngreso.value : '');
+
     setShowSuccess(true);
     setFormData(initialState);
+
     fetch(scriptURL, { method: 'POST', body: formDataObject })
       .then(response => {
         if (response.ok) console.log('Registro guardado en Google Sheets exitosamente.');
@@ -79,14 +88,11 @@ const FormularioRegistro = () => {
     <div className="form-container">
       <img src={headerImageDesktop} alt="Form Header" className="form-header-img desktop-header" />
       <img src={headerImageMobile} alt="Form Header Mobile" className="form-header-img mobile-header" />
-
-      {/* ===== CAMBIO CLAVE AQUÍ: AÑADIMOS LOS NUEVOS TEXTOS ===== */}
       <div className="form-header-text">
-        <h3 className="form-super-title">INSCRIPCIÓN PARA EL SABE FEST</h3>
-        <p className="form-description">Este formulario tiene como objetivo registrar su paticipación en el SABE FEST 2025, una noche para celebrar tus logros y compartir con otros jovenes de Cerro Azul</p>
+        <h3 className="form-super-title">CONCURSO DE CONOCIMIENTOS</h3>
+        <p className="form-description">Dirigido a estudiantes de 4to y 5to de secundaria</p>
       </div>
-      
-
+      <h2 className="form-title">INSCRIPCIÓN</h2>
       
       {showSuccess ? (
         <div className="success-container">
@@ -102,6 +108,13 @@ const FormularioRegistro = () => {
             <div className="input-group"><FaUser className="input-icon" /><input type="text" name="nombres" placeholder="Nombres" className="input-field" value={formData.nombres} onChange={handleInputChange} required /></div>
             <div className="input-group"><FaUser className="input-icon" /><input type="text" name="apellidos" placeholder="Apellidos" className="input-field" value={formData.apellidos} onChange={handleInputChange} required /></div>
             <div className="input-group"><FaBirthdayCake className="input-icon" /><input type="number" name="edad" placeholder="Edad" className="input-field" value={formData.edad} onChange={handleInputChange} required /></div>
+            
+            {/* 4. AÑADIMOS EL NUEVO CAMPO DE CELULAR EN EL FORMULARIO */}
+            <div className="input-group">
+              <FaPhoneAlt className="input-icon" />
+              <input type="tel" name="celular" placeholder="Celular" className="input-field" value={formData.celular} onChange={handleInputChange} required />
+            </div>
+
             <div className="input-group">
               <FaUniversity className="input-icon" />
               <input type="text" name="universidad" placeholder="Universidad/instituto" className="input-field" value={formData.universidad} onChange={handleInputChange} required />
@@ -117,7 +130,7 @@ const FormularioRegistro = () => {
                 value={formData.anoIngreso} 
                 options={opcionesAno} 
                 styles={customStyles}
-                placeholder="Año de ingreso Sabe/Accedu" 
+                placeholder="Año que ingresaste..." 
                 onChange={handleSelectChange} 
                 isSearchable={false} 
                 required 
